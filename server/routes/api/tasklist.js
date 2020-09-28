@@ -5,14 +5,14 @@ const router = express.Router()
 
 //GEt posts
 router.get('/', async (req, res) => {
-    const mytasks = await loadTasksCollection()
-    res.send(await mytasks.find({}).toArray())
+    const post = await loadTasksCollection()
+    res.send(await post.find({}).toArray())
 })
 
 //Add Post
 router.post('/', async (req,res) => {
-    const mytasks = await loadTasksCollection()
-    await mytasks.insertOne({
+    const post = await loadTasksCollection()
+    await post.insertOne({
         task: req.body.task,
         dateCreated: new Date()
     })
@@ -21,8 +21,8 @@ router.post('/', async (req,res) => {
 
 //Delete Post
 router.delete('/:id', async (req, res) => {
-    const mytasks = await loadTasksCollection()
-    await mytasks.deleteOne({ _id: new mongodb.ObjectID(req.params.id) })
+    const post = await loadTasksCollection()
+    await post.deleteOne({ _id: new mongodb.ObjectID(req.params.id) })
     res.status(200).send()
 })
 
