@@ -1,26 +1,26 @@
 <template>
-  <div class="container">
-    <h1>Latest Posts</h1>
-    <!-- Create post here -->
-    <div class="card">
-      <label for="create-post">Type Something...</label>
-      <input type="text" id="create-post" v-model="text" placeholder="Create a Post">
-      <button v-on:click="createPost">Post!!!!</button>
-    </div>
-    <hr>
-    <p class="error" v-if='error'>{{ error }}</p>
-    <div class="post-container">
-      <div class="post" 
-      v-for='(post, index) in posts'
+<div class="container">
+  <input type="text" class="input-field"
+            placeholder="What needs to be done" 
+            v-model="text" 
+            @keyup.enter="createPost()">
+
+  <div v-for='(post, index) in posts'
       v-bind:item='post'
       v-bind:index='index'
       v-bind:key='post._id'
       v-on:dblclick="deletePost(post._id)"
-      >
-        <p class="text">{{ post.task }}</p>
-      </div>
-    </div>
-  </div>
+    class="todo-item">
+     <div class="card">
+        <div class="">
+            <div class="card-content">
+              <p>{{ `${post.dateCreated.getDate()} / ${post.dateCreated.getMonth()+1} / ${post.dateCreated.getFullYear()}` }}</p>
+                <p class="card-title">{{ post.task }}</p>
+            </div>
+        </div>
+     </div>
+</div>
+</div>
 </template>
 
 <script>
