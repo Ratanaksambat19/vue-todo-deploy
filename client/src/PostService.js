@@ -1,7 +1,7 @@
 /* eslint-disable no-async-promise-executor */
 import axios from 'axios'
 
-const url = 'http://localhost:5000/api/tasklist/'
+const url = 'api/tasklist/'
 
 
 class PostService {
