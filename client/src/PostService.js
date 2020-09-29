@@ -9,8 +9,8 @@ class PostService {
     static getPosts() {
         return new Promise(async(resolve, reject) => {
             try {
-                const res = await axios.get(url);
-                const data = res.data;
+                const res = await axios.get(url)
+                const data = res.data
                 resolve(
                     data.map(post => ({
                         ...post,
@@ -27,15 +27,15 @@ class PostService {
     static insertPost(text) {
         return axios.post(url, {
             text
-        });
+        })
     }
 
     // Delete Posts
     static deletePost(id) {
-        return axios.delete(`${url}${id}`);
+        return axios.delete(`${url}${id}`)
     }
 }
 
-export default PostService;
+export default PostService
 
 
